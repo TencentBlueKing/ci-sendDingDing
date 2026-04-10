@@ -1,0 +1,118 @@
+{
+    "atomCode": "senddingtalk",
+    "execution": {
+        "packagePath": "senddingtalk-1.0.0.tar.gz",
+        "language": "python",
+        "demands": [
+            "pip install senddingtalk-1.0.0.tar.gz"
+        ],
+        "target": "senddingtalk"
+    },
+    "input": {
+        "sign": {
+            "label":"加签",
+            "default":"",
+            "placeholder":"钉钉群机器人加签字符串，例如 SECed5165a3803abd1e1cc29dd57e8b7eb06dc075db656e1318fde122d47cbd0b31",
+            "type":"vuex-input",
+            "desc":"",
+            "required": true
+        },
+        "webhook": {
+            "label":"Webhook Key",
+            "default":"",
+            "placeholder":"钉钉群机器人webhook key，例如 ee3e1d61185b9337d0cb0e4f1540c14963d4080bb531afc0f8c05258c8ff772b",
+            "type":"vuex-input",
+            "desc":"",
+            "required": true
+        },
+        "msgtype": {
+            "label":"消息类型",
+            "default":"text",
+            "type":"selector",
+            "desc":"",
+            "required": true,
+            "options": [
+                {
+                  "id": "text",
+                  "name": "文本类型（text）",
+                  "desc": "",
+                  "disabled": false
+                },
+                {
+                  "id": "markdown",
+                  "name": "MD类型（markdown）",
+                  "desc": "",
+                  "disabled": false
+                }
+            ]
+        },
+        "t_content": {
+            "label": "文本内容（content）",
+            "default": "",
+            "type": "vuex-textarea",
+            "disabled": false,
+            "hidden": false,
+            "isSensitive": false,
+            "desc": "文本内容",
+            "required": true,
+            "rely":{
+                "expression":[
+                    {
+                        "key": "msgtype",
+                        "value": "text"
+                    }
+                ]
+            }
+        },
+        "title": {
+            "label": "title",
+            "default": "",
+            "type": "vuex-input",
+            "disabled": false,
+            "hidden": false,
+            "isSensitive": false,
+            "desc": "标题",
+            "required": true,
+            "rely":{
+                "expression":[
+                    {
+                        "key": "msgtype",
+                        "value": "markdown"
+                    }
+                ]
+            }
+        },
+        "m_content": {
+            "label": "markdown 内容（content）",
+            "default": "",
+            "type": "vuex-textarea",
+            "disabled": false,
+            "hidden": false,
+            "isSensitive": false,
+            "desc": "markdown内容",
+            "required": true,
+            "rely":{
+                "expression":[
+                    {
+                        "key": "msgtype",
+                        "value": "markdown"
+                    }
+                ]
+            }
+        },
+        "start_user_name": {
+            "label": "",
+            "type": "atom-checkbox",
+            "default": false,
+            "text": "提醒当前执行人",
+            "desc": "勾选后发送消息时，自动提醒当前流水线执行人"
+        },
+       "usernames": {
+            "label":"指定额外提醒人员",
+            "inputType": "all",
+            "placeholder":"",
+            "type":"user-input",
+            "desc":"输入需提醒的人员用户名，如需提醒所有人，请输入@all"
+        }
+}
+}
